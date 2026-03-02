@@ -92,7 +92,7 @@
 
     <div class="header">
       <div class="header-title">Ma Bulle du Soir</div>
-      <div class="date-wrapper" onclick="document.getElementById('datePicker').showPicker && document.getElementById('datePicker').showPicker()">
+      <div class="date-wrapper" onclick="try{ document.getElementById('datePicker').showPicker && document.getElementById('datePicker').showPicker() }catch(e){}">
         <span class="date-icon">📅</span>
         <input type="date" id="datePicker" class="date-input" />
       </div>
@@ -135,22 +135,22 @@
       <div class="card-question">As-tu pris du temps pour toi ?</div>
       <div class="multi-hint">✦ Plusieurs réponses possibles</div>
       <div class="plaisir-grid" id="plaisirGrid">
-        <button class="plaisir-btn" id="pb_energie" onclick="selPlaisir('energie',this)">
+        <button class="plaisir-btn" id="pb_energie" onclick="selTemps('energie',this)">
           <span class="p-emoji">⚡</span><span class="p-cat">Énergie</span><span class="p-label">Musique, marche, danse…</span>
         </button>
-        <button class="plaisir-btn" id="pb_douceur" onclick="selPlaisir('douceur',this)">
+        <button class="plaisir-btn" id="pb_douceur" onclick="selTemps('douceur',this)">
           <span class="p-emoji">🧴</span><span class="p-cat">Douceur</span><span class="p-label">Soins, lecture, sieste…</span>
         </button>
-        <button class="plaisir-btn" id="pb_gourmandise" onclick="selPlaisir('gourmandise',this)">
+        <button class="plaisir-btn" id="pb_gourmandise" onclick="selTemps('gourmandise',this)">
           <span class="p-emoji">🍫</span><span class="p-cat">Gourmandise</span><span class="p-label">Bon plat, verre, dessert…</span>
         </button>
-        <button class="plaisir-btn" id="pb_reconnexion" onclick="selPlaisir('reconnexion',this)">
+        <button class="plaisir-btn" id="pb_reconnexion" onclick="selTemps('reconnexion',this)">
           <span class="p-emoji">🫶</span><span class="p-cat">Re-connexion</span><span class="p-label">Moment à soi, câlin, rire…</span>
         </button>
-        <button class="plaisir-btn" id="pb_evasion" onclick="selPlaisir('evasion',this)">
+        <button class="plaisir-btn" id="pb_evasion" onclick="selTemps('evasion',this)">
           <span class="p-emoji">🎬</span><span class="p-cat">Évasion</span><span class="p-label">Film, série…</span>
         </button>
-        <button class="plaisir-btn plaisir-none" id="pb_aucun" onclick="selPlaisir('aucun',this)">
+        <button class="plaisir-btn plaisir-none" id="pb_aucun" onclick="selTemps('aucun',this)">
           <span class="p-emoji">😐</span><span class="p-label">Aucun aujourd'hui</span>
         </button>
       </div>
@@ -203,7 +203,7 @@
 <script>
 // ════════════════════════════════════════════
 //  REMPLACEZ ICI VOTRE URL GOOGLE APPS SCRIPT
-const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwWyTrxkzcMxRL9nkMYFwBTMvCAbi1zHbGjzFwkDp_UEwm-JxWFy-XJKOZKqWdfZNY2/exec';
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw7OvuvIoZwYzTUbJR3-lkmuUeAGekWEWthMINtOtnEBjMEe_MW4A3QROCiH6IeEAU/exec';
 // ════════════════════════════════════════════
 
 const now       = new Date();
@@ -240,8 +240,8 @@ function sel1(key, val, btn) {
   sync();
 }
 
-// ── Sélection plaisirs (multi) ───────────────
-function selPlaisir(val, btn) {
+// ── Sélection temps pour soi (multi) ────────
+function selTemps(val, btn) {
   if (val === 'aucun') {
     document.querySelectorAll('#plaisirGrid .plaisir-btn').forEach(b => b.classList.remove('selected'));
     btn.classList.add('selected');
@@ -336,7 +336,12 @@ async function submitForm() {
     temps_pour_soi:      A.q5,
     // ── Couple ──
     meteo_couple:        A.qCouple,
-    couple_axes:         A.qCoupleSub.join(', '),
+    coquin_excitee:      A.qCoupleSub.includes('excitee')  ? 1 : 0,
+    coquin_jeu:          A.qCoupleSub.includes('jeu')       ? 1 : 0,
+    coquin_lingerie:     A.qCoupleSub.includes('lingerie')  ? 1 : 0,
+    coquin_photos:       A.qCoupleSub.includes('photos')    ? 1 : 0,
+    coquin_solitaire:    A.qCoupleSub.includes('solitaire') ? 1 : 0,
+    coquin_sortie:       A.qCoupleSub.includes('sortie')    ? 1 : 0,
     couple_commentaire:  A.comment
   };
 
