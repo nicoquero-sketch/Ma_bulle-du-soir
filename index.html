@@ -13,7 +13,6 @@
     --or-light:     #E2C97E;
     --or-bg:        rgba(201,168,76,0.10);
     --or-sel:       rgba(201,168,76,0.22);
-    --blanc:        #FFFFFF;
     --blanc-soft:   rgba(255,255,255,0.90);
     --border:       1.5px solid rgba(201,168,76,0.40);
     --border-thick: 1.8px solid rgba(201,168,76,0.55);
@@ -31,12 +30,16 @@
   .date-icon { font-size: 16px; }
   .date-input { background: transparent; border: none; outline: none; font-family: 'Jost', sans-serif; font-size: 17px; font-weight: 400; color: var(--or-light); cursor: pointer; width: 148px; text-align: center; color-scheme: dark; }
   .date-input::-webkit-calendar-picker-indicator { opacity: 0; width: 0; }
+
   .card { background: rgba(255,255,255,0.03); border: var(--border); border-radius: 16px; padding: 22px 20px; margin-bottom: 14px; animation: fadeUp 0.4s ease both; transition: border-color 0.3s; }
   @keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
   .card.answered { border: 1.8px solid rgba(201,168,76,0.75); }
   .card-question { font-family: 'Cormorant Garamond', serif; font-size: 21px; font-weight: 400; color: #fff; line-height: 1.3; margin-bottom: 18px; }
+  .multi-hint { font-size: 11px; color: rgba(201,168,76,0.65); letter-spacing: 0.5px; margin-bottom: 13px; }
+
+  /* Boutons radio simples */
   .options-grid { display: flex; flex-direction: column; gap: 9px; }
-  .option-btn { display: flex; align-items: center; gap: 12px; padding: 13px 15px; background: transparent; border: var(--border); border-radius: 11px; cursor: pointer; width: 100%; transition: all 0.2s; -webkit-appearance: none; }
+  .option-btn { display: flex; align-items: center; gap: 12px; padding: 13px 15px; background: transparent; border: var(--border); border-radius: 11px; cursor: pointer; width: 100%; transition: all 0.2s; -webkit-appearance: none; color: #fff; }
   .option-btn .emoji { font-size: 19px; flex-shrink: 0; width: 24px; text-align: center; }
   .option-btn .label { font-size: 14px; font-weight: 300; color: var(--blanc-soft); line-height: 1.3; flex: 1; text-align: left; }
   .option-btn .check { margin-left: auto; width: 19px; height: 19px; border-radius: 50%; border: var(--border); flex-shrink: 0; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
@@ -44,27 +47,44 @@
   .option-btn.selected .label { color: #fff; font-weight: 400; }
   .option-btn.selected .check { background: var(--or); border-color: var(--or); }
   .option-btn.selected .check::after { content: ''; width: 5px; height: 5px; border-radius: 50%; background: #000; }
-  .multi-hint { font-size: 11px; color: rgba(201,168,76,0.65); letter-spacing: 0.5px; margin-bottom: 13px; }
-  .plaisir-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; }
-  .plaisir-btn { display: flex; flex-direction: column; align-items: flex-start; gap: 5px; padding: 13px 12px; background: transparent; border: var(--border); border-radius: 11px; cursor: pointer; width: 100%; transition: all 0.2s; -webkit-appearance: none; color: #fff; }
-  .plaisir-btn .p-emoji { font-size: 22px; line-height: 1; }
-  .plaisir-btn .p-cat { font-size: 11px; font-weight: 500; letter-spacing: 1px; text-transform: uppercase; color: var(--or); line-height: 1; margin-top: 2px; }
-  .plaisir-btn .p-label { font-size: 12px; font-weight: 300; color: rgba(255,255,255,0.80); line-height: 1.35; }
-  .plaisir-btn.selected { background: var(--or-sel); border: 1.8px solid var(--or); }
-  .plaisir-btn.selected .p-label { color: #fff; }
-  .plaisir-none { grid-column: 1 / -1; flex-direction: row; align-items: center; gap: 12px; }
-  .plaisir-none .p-label { font-size: 13px; }
-  .sub-card { background: rgba(201,168,76,0.05); border: var(--border); border-radius: 12px; padding: 18px 16px; margin-top: 14px; display: none; }
-  .sub-card.visible { display: block; animation: fadeUp 0.3s ease; }
-  .sub-question { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 400; font-style: italic; color: var(--blanc-soft); margin-bottom: 14px; }
-  .detail-input { width: 100%; padding: 12px 14px; margin-top: 12px; border: var(--border); border-radius: 11px; background: rgba(255,255,255,0.03); font-family: 'Jost', sans-serif; font-size: 14px; font-weight: 300; color: #fff; outline: none; resize: none; caret-color: var(--or); color-scheme: dark; }
-  .detail-input:focus { border-color: var(--or-light); }
-  .detail-input::placeholder { color: rgba(201,168,76,0.35); font-style: italic; }
+
+  /* Moments Q4 */
+  .moment-row { border: var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 9px; transition: border-color 0.2s; }
+  .moment-row.selected { border: 1.8px solid var(--or); background: rgba(201,168,76,0.04); }
+  .moment-header { display: flex; align-items: center; gap: 10px; padding: 13px 14px; cursor: pointer; background: transparent; width: 100%; -webkit-appearance: none; color: #fff; border: none; }
+  .moment-header .m-emoji { font-size: 20px; flex-shrink: 0; width: 26px; text-align: center; }
+  .moment-header .m-label { font-size: 13px; font-weight: 300; color: var(--blanc-soft); flex: 1; text-align: left; line-height: 1.4; }
+  .moment-header .m-val { font-size: 11px; font-weight: 500; color: var(--or); min-width: 55px; text-align: right; }
+  .moment-header .m-arrow { font-size: 11px; color: rgba(201,168,76,0.5); margin-left: 6px; transition: transform 0.2s; }
+  .moment-row.open .m-arrow { transform: rotate(180deg); }
+  .moment-sub { display: none; padding: 0 14px 13px; gap: 7px; flex-wrap: wrap; }
+  .moment-row.open .moment-sub { display: flex; }
+  .sub-choice { padding: 7px 16px; background: transparent; border: var(--border); border-radius: 20px; cursor: pointer; font-size: 12px; font-weight: 400; color: rgba(255,255,255,0.7); -webkit-appearance: none; transition: all 0.18s; }
+  .sub-choice.selected { background: var(--or-sel); border-color: var(--or); color: #fff; font-weight: 500; }
+
+  .moment-none { display: flex; align-items: center; gap: 12px; padding: 13px 15px; background: transparent; border: var(--border); border-radius: 11px; cursor: pointer; width: 100%; transition: all 0.2s; -webkit-appearance: none; color: #fff; margin-top: 4px; border: none; border: var(--border); }
+  .moment-none .label { font-size: 14px; font-weight: 300; color: var(--blanc-soft); flex: 1; text-align: left; }
+  .moment-none.selected { background: var(--or-sel); border: 1.8px solid var(--or); }
+  .moment-none.selected .label { color: #fff; }
+
+  /* Toggle couple */
+  .couple-toggle { display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 14px 16px; background: transparent; border: var(--border); border-radius: 11px; cursor: pointer; -webkit-appearance: none; color: #fff; transition: all 0.2s; }
+  .couple-toggle.active { background: var(--or-sel); border: 1.8px solid var(--or); }
+  .ct-label { font-size: 14px; font-weight: 300; color: var(--blanc-soft); }
+  .couple-toggle.active .ct-label { color: #fff; font-weight: 400; }
+  .ct-check { width: 22px; height: 22px; border-radius: 6px; border: var(--border); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.2s; }
+  .couple-toggle.active .ct-check { background: var(--or); border-color: var(--or); }
+  .couple-toggle.active .ct-check::after { content: '✓'; font-size: 13px; color: #000; font-weight: 700; }
+  .couple-options { display: none; animation: fadeUp 0.3s ease; }
+  .couple-options.visible { display: block; }
+
+  /* Submit */
   .submit-section { padding: 8px 0 24px; }
   .submit-btn { width: 100%; padding: 18px; background: var(--or-bg); color: var(--or-light); border: var(--border-thick); border-radius: 14px; font-family: 'Cormorant Garamond', serif; font-size: 22px; font-style: italic; font-weight: 300; letter-spacing: 1px; cursor: pointer; transition: all 0.2s; -webkit-appearance: none; }
   .submit-btn:disabled { opacity: 0.28; cursor: not-allowed; }
   .btn-content { display: flex; align-items: center; justify-content: center; gap: 12px; }
   .footer { text-align: center; padding: 6px 0 14px; font-family: 'Cormorant Garamond', serif; font-size: 17px; font-style: italic; font-weight: 300; color: rgba(201,168,76,0.5); letter-spacing: 3px; }
+
   .success-screen { display: none; text-align: center; padding: 100px 20px; }
   .success-screen.show { display: block; animation: fadeUp 0.5s ease; }
   .form-content.hide { display: none; }
@@ -102,91 +122,195 @@
     <div class="card" id="card1">
       <div class="card-question">Quelle est ta météo intérieure ?</div>
       <div class="options-grid">
-        <button class="option-btn" onclick="sel1('q1','super',this)"><span class="emoji">😄</span><span class="label">Super</span><span class="check"></span></button>
+        <button class="option-btn" onclick="sel1('q1','tres_bonne_humeur',this)"><span class="emoji">🤩</span><span class="label">Très bonne humeur</span><span class="check"></span></button>
+        <button class="option-btn" onclick="sel1('q1','bonne_humeur',this)"><span class="emoji">😄</span><span class="label">Bonne humeur</span><span class="check"></span></button>
         <button class="option-btn" onclick="sel1('q1','ca_va',this)"><span class="emoji">🙂</span><span class="label">Ça va</span><span class="check"></span></button>
         <button class="option-btn" onclick="sel1('q1','un_peu_triste',this)"><span class="emoji">😢</span><span class="label">Un peu triste</span><span class="check"></span></button>
         <button class="option-btn" onclick="sel1('q1','tres_triste',this)"><span class="emoji">😭</span><span class="label">Très triste</span><span class="check"></span></button>
+        <button class="option-btn" onclick="sel1('q1','mauvaise_humeur',this)"><span class="emoji">😠</span><span class="label">Mauvaise humeur</span><span class="check"></span></button>
       </div>
     </div>
 
     <!-- Q2 : Sommeil -->
     <div class="card" id="card2">
-      <div class="card-question">As-tu bien dormi la nuit dernière ?</div>
+      <div class="card-question">Temps et qualité de sommeil ?</div>
       <div class="options-grid">
-        <button class="option-btn" onclick="sel1('q2','tres_bien',this)"><span class="emoji">🌙</span><span class="label">Très bien</span><span class="check"></span></button>
-        <button class="option-btn" onclick="sel1('q2','assez_bien',this)"><span class="emoji">😴</span><span class="label">Assez bien</span><span class="check"></span></button>
-        <button class="option-btn" onclick="sel1('q2','pas_bien',this)"><span class="emoji">😩</span><span class="label">Pas bien</span><span class="check"></span></button>
+        <button class="option-btn" onclick="sel1('q2','au_top',this)"><span class="emoji">✨</span><span class="label">Au top</span><span class="check"></span></button>
+        <button class="option-btn" onclick="sel1('q2','bien',this)"><span class="emoji">🌙</span><span class="label">Bien</span><span class="check"></span></button>
+        <button class="option-btn" onclick="sel1('q2','passable',this)"><span class="emoji">😴</span><span class="label">Passable</span><span class="check"></span></button>
+        <button class="option-btn" onclick="sel1('q2','mediocre',this)"><span class="emoji">😩</span><span class="label">Médiocre</span><span class="check"></span></button>
       </div>
     </div>
 
     <!-- Q3 : Travail -->
     <div class="card" id="card3">
-      <div class="card-question">À quelle heure as-tu arrêté de travailler ?</div>
+      <div class="card-question">À quelle heure es-tu rentrée ou as-tu arrêté le télétravail ?</div>
       <div class="options-grid">
-        <button class="option-btn" onclick="sel1('q3','avant_18h30',this)"><span class="emoji">✅</span><span class="label">Avant 18h30</span><span class="check"></span></button>
-        <button class="option-btn" onclick="sel1('q3','entre_18h30_19h30',this)"><span class="emoji">⏰</span><span class="label">Entre 18h30 et 19h30</span><span class="check"></span></button>
-        <button class="option-btn" onclick="sel1('q3','apres_19h30',this)"><span class="emoji">😬</span><span class="label">Après 19h30</span><span class="check"></span></button>
-        <button class="option-btn" id="q3_repos_btn" onclick="sel1('q3','pas_travaille',this)"><span class="emoji">🌿</span><span class="label">Je ne travaillais pas aujourd'hui</span><span class="check"></span></button>
+        <button class="option-btn" onclick="sel1('q3','avant_19h30',this)"><span class="emoji">✅</span><span class="label">Avant 19h30</span><span class="check"></span></button>
+        <button class="option-btn" onclick="sel1('q3','entre_19h30_20h30',this)"><span class="emoji">⏰</span><span class="label">Après 19h30 mais avant 20h30</span><span class="check"></span></button>
+        <button class="option-btn" onclick="sel1('q3','apres_20h30',this)"><span class="emoji">😬</span><span class="label">Après 20h30</span><span class="check"></span></button>
+        <button class="option-btn" id="q3_repos_btn" onclick="sel1('q3','pas_travaille',this)"><span class="emoji">🌿</span><span class="label">Pas de travail aujourd'hui</span><span class="check"></span></button>
       </div>
     </div>
 
-    <!-- Q4 : Temps pour soi – catégories -->
+    <!-- Q4 : Moments de la journée -->
     <div class="card" id="card4">
-      <div class="card-question">As-tu pris du temps pour toi ?</div>
-      <div class="multi-hint">✦ Plusieurs réponses possibles</div>
-      <div class="plaisir-grid" id="plaisirGrid">
-        <button class="plaisir-btn" id="pb_energie" onclick="selTemps('energie',this)">
-          <span class="p-emoji">⚡</span><span class="p-cat">Énergie</span><span class="p-label">Musique, marche, danse…</span>
-        </button>
-        <button class="plaisir-btn" id="pb_douceur" onclick="selTemps('douceur',this)">
-          <span class="p-emoji">🧴</span><span class="p-cat">Douceur</span><span class="p-label">Soins, lecture, sieste…</span>
-        </button>
-        <button class="plaisir-btn" id="pb_gourmandise" onclick="selTemps('gourmandise',this)">
-          <span class="p-emoji">🍫</span><span class="p-cat">Gourmandise</span><span class="p-label">Bon plat, verre, dessert…</span>
-        </button>
-        <button class="plaisir-btn" id="pb_reconnexion" onclick="selTemps('reconnexion',this)">
-          <span class="p-emoji">🫶</span><span class="p-cat">Re-connexion</span><span class="p-label">Moment à soi, câlin, rire…</span>
-        </button>
-        <button class="plaisir-btn" id="pb_evasion" onclick="selTemps('evasion',this)">
-          <span class="p-emoji">🎬</span><span class="p-cat">Évasion</span><span class="p-label">Film, série…</span>
-        </button>
-        <button class="plaisir-btn plaisir-none" id="pb_aucun" onclick="selTemps('aucun',this)">
-          <span class="p-emoji">😐</span><span class="p-label">Aucun aujourd'hui</span>
-        </button>
-      </div>
-    </div>
+      <div class="card-question">Et cette journée ?</div>
+      <div class="multi-hint">✦ Toucher un moment pour choisir son intensité</div>
 
-    <!-- Q5 : Durée -->
-    <div class="card" id="card5">
-      <div class="card-question">Combien de temps cela représente selon toi ?</div>
-      <div class="options-grid">
-        <button class="option-btn" onclick="sel1('q5','moins_30min',this)"><span class="emoji">⏳</span><span class="label">Moins de 30 minutes</span><span class="check"></span></button>
-        <button class="option-btn" onclick="sel1('q5','30min_1h',this)"><span class="emoji">⌛</span><span class="label">Entre 30 min et 1 heure</span><span class="check"></span></button>
-        <button class="option-btn" onclick="sel1('q5','1h_2h',this)"><span class="emoji">🕐</span><span class="label">Entre 1h et 2h</span><span class="check"></span></button>
-        <button class="option-btn" onclick="sel1('q5','plus_2h',this)"><span class="emoji">🌸</span><span class="label">Plus de 2 heures</span><span class="check"></span></button>
-      </div>
-    </div>
-
-    <!-- Q6 : Météo couple -->
-    <div class="card" id="card6">
-      <div class="card-question">Météo du couple</div>
-      <div class="options-grid">
-        <button class="option-btn" onclick="selCouple('bonne',this)"><span class="emoji">☀️</span><span class="label">Bonne</span><span class="check"></span></button>
-        <button class="option-btn" onclick="selCouple('moyenne',this)"><span class="emoji">⛅</span><span class="label">Moyenne</span><span class="check"></span></button>
-        <button class="option-btn" onclick="selCouple('mauvaise',this)"><span class="emoji">🌧️</span><span class="label">Mauvaise</span><span class="check"></span></button>
-      </div>
-      <div class="sub-card" id="coupleSubCard">
-        <div class="sub-question">D'un point de vue coquin aujourd'hui</div>
-        <div class="multi-hint">✦ Plusieurs réponses possibles</div>
-        <div class="options-grid">
-          <button class="option-btn" onclick="selMulti('qCoupleSub','excitee',this)"><span class="emoji">🔥</span><span class="label">Tu étais assez excitée ou plus</span><span class="check"></span></button>
-          <button class="option-btn" onclick="selMulti('qCoupleSub','jeu',this)"><span class="emoji">🎲</span><span class="label">Tu as joué à un jeu hot, regardé des diapos</span><span class="check"></span></button>
-          <button class="option-btn" onclick="selMulti('qCoupleSub','lingerie',this)"><span class="emoji">👙</span><span class="label">Tu as fait un défilé de lingerie</span><span class="check"></span></button>
-          <button class="option-btn" onclick="selMulti('qCoupleSub','photos',this)"><span class="emoji">📸</span><span class="label">Tu as fait des photos ou vidéos</span><span class="check"></span></button>
-          <button class="option-btn" onclick="selMulti('qCoupleSub','solitaire',this)"><span class="emoji">🤲</span><span class="label">Tu as eu un plaisir solitaire</span><span class="check"></span></button>
-          <button class="option-btn" onclick="selMulti('qCoupleSub','sortie',this)"><span class="emoji">🌃</span><span class="label">Tu as fait une sortie avec ton mari</span><span class="check"></span></button>
+      <div class="moment-row" id="mr_energie">
+        <button class="moment-header" onclick="toggleMoment('energie')">
+          <span class="m-emoji">⚡</span>
+          <span class="m-label">Moment énergie<br><small style="color:rgba(255,255,255,0.35);font-size:11px">Musique, marche, danse…</small></span>
+          <span class="m-val" id="mv_energie"></span>
+          <span class="m-arrow">▾</span>
+        </button>
+        <div class="moment-sub">
+          <button class="sub-choice" onclick="setMoment('energie','super',this)">Super</button>
+          <button class="sub-choice" onclick="setMoment('energie','au_top',this)">Au top !</button>
         </div>
-        <textarea class="detail-input" id="coupleComment" rows="2" placeholder="Un commentaire, une pensée… ✦"></textarea>
+      </div>
+
+      <div class="moment-row" id="mr_bienetre">
+        <button class="moment-header" onclick="toggleMoment('bienetre')">
+          <span class="m-emoji">🧴</span>
+          <span class="m-label">Moment bien-être<br><small style="color:rgba(255,255,255,0.35);font-size:11px">Sieste, lecture, soins…</small></span>
+          <span class="m-val" id="mv_bienetre"></span>
+          <span class="m-arrow">▾</span>
+        </button>
+        <div class="moment-sub">
+          <button class="sub-choice" onclick="setMoment('bienetre','super',this)">Super</button>
+          <button class="sub-choice" onclick="setMoment('bienetre','au_top',this)">Au top !</button>
+        </div>
+      </div>
+
+      <div class="moment-row" id="mr_gourmandise">
+        <button class="moment-header" onclick="toggleMoment('gourmandise')">
+          <span class="m-emoji">🍫</span>
+          <span class="m-label">Moment gourmandise<br><small style="color:rgba(255,255,255,0.35);font-size:11px">Boisson, repas, douceur…</small></span>
+          <span class="m-val" id="mv_gourmandise"></span>
+          <span class="m-arrow">▾</span>
+        </button>
+        <div class="moment-sub">
+          <button class="sub-choice" onclick="setMoment('gourmandise','super',this)">Super</button>
+          <button class="sub-choice" onclick="setMoment('gourmandise','au_top',this)">Au top !</button>
+        </div>
+      </div>
+
+      <div class="moment-row" id="mr_convivialite">
+        <button class="moment-header" onclick="toggleMoment('convivialite')">
+          <span class="m-emoji">🎉</span>
+          <span class="m-label">Moment convivialité<br><small style="color:rgba(255,255,255,0.35);font-size:11px">Rire, jeux, sorties…</small></span>
+          <span class="m-val" id="mv_convivialite"></span>
+          <span class="m-arrow">▾</span>
+        </button>
+        <div class="moment-sub">
+          <button class="sub-choice" onclick="setMoment('convivialite','super',this)">Super</button>
+          <button class="sub-choice" onclick="setMoment('convivialite','au_top',this)">Au top !</button>
+        </div>
+      </div>
+
+      <div class="moment-row" id="mr_evasion">
+        <button class="moment-header" onclick="toggleMoment('evasion')">
+          <span class="m-emoji">🎬</span>
+          <span class="m-label">Moment évasion<br><small style="color:rgba(255,255,255,0.35);font-size:11px">Télé, série, cinéma…</small></span>
+          <span class="m-val" id="mv_evasion"></span>
+          <span class="m-arrow">▾</span>
+        </button>
+        <div class="moment-sub">
+          <button class="sub-choice" onclick="setMoment('evasion','super',this)">Super</button>
+          <button class="sub-choice" onclick="setMoment('evasion','au_top',this)">Au top !</button>
+        </div>
+      </div>
+
+      <div class="moment-row" id="mr_vitalite">
+        <button class="moment-header" onclick="toggleMoment('vitalite')">
+          <span class="m-emoji">🐧</span>
+          <span class="m-label">Moment vitalité<br><small style="color:rgba(255,255,255,0.35);font-size:11px">Pingouin, Pink, Lola…</small></span>
+          <span class="m-val" id="mv_vitalite"></span>
+          <span class="m-arrow">▾</span>
+        </button>
+        <div class="moment-sub">
+          <button class="sub-choice" onclick="setMoment('vitalite','super',this)">Super</button>
+          <button class="sub-choice" onclick="setMoment('vitalite','au_top',this)">Au top !</button>
+        </div>
+      </div>
+
+      <div class="moment-row" id="mr_exaltant">
+        <button class="moment-header" onclick="toggleMoment('exaltant')">
+          <span class="m-emoji">🌟</span>
+          <span class="m-label">Moment exaltant</span>
+          <span class="m-val" id="mv_exaltant"></span>
+          <span class="m-arrow">▾</span>
+        </button>
+        <div class="moment-sub">
+          <button class="sub-choice" onclick="setMoment('exaltant','petit',this)">Petit</button>
+          <button class="sub-choice" onclick="setMoment('exaltant','grand',this)">Grand</button>
+        </div>
+      </div>
+
+      <div class="moment-row" id="mr_tristesse">
+        <button class="moment-header" onclick="toggleMoment('tristesse')">
+          <span class="m-emoji">💧</span>
+          <span class="m-label">Moment de tristesse</span>
+          <span class="m-val" id="mv_tristesse"></span>
+          <span class="m-arrow">▾</span>
+        </button>
+        <div class="moment-sub">
+          <button class="sub-choice" onclick="setMoment('tristesse','petit',this)">Petit</button>
+          <button class="sub-choice" onclick="setMoment('tristesse','grand',this)">Grand</button>
+        </div>
+      </div>
+
+      <div class="moment-row" id="mr_stress">
+        <button class="moment-header" onclick="toggleMoment('stress')">
+          <span class="m-emoji">😤</span>
+          <span class="m-label">Moment de stress</span>
+          <span class="m-val" id="mv_stress"></span>
+          <span class="m-arrow">▾</span>
+        </button>
+        <div class="moment-sub">
+          <button class="sub-choice" onclick="setMoment('stress','aucun',this)">Aucun</button>
+          <button class="sub-choice" onclick="setMoment('stress','un_peu',this)">Un peu</button>
+          <button class="sub-choice" onclick="setMoment('stress','beaucoup',this)">Beaucoup</button>
+        </div>
+      </div>
+
+      <div class="moment-row" id="mr_conflits">
+        <button class="moment-header" onclick="toggleMoment('conflits')">
+          <span class="m-emoji">⚡</span>
+          <span class="m-label">Moments de conflits</span>
+          <span class="m-val" id="mv_conflits"></span>
+          <span class="m-arrow">▾</span>
+        </button>
+        <div class="moment-sub">
+          <button class="sub-choice" onclick="setConflitMulti('enfants',this)">Enfants</button>
+          <button class="sub-choice" onclick="setConflitMulti('mari',this)">Mari</button>
+          <button class="sub-choice" onclick="setConflitMulti('autre',this)">Autre</button>
+        </div>
+      </div>
+
+      <button class="moment-none" id="btn_aucun" onclick="setAucun(this)">
+        <span style="font-size:18px">😐</span>
+        <span class="label">Aucun moment notable</span>
+      </button>
+    </div>
+
+    <!-- Q5 : Activités couple -->
+    <div class="card" id="card5">
+      <div class="card-question">Activités du couple</div>
+      <button class="couple-toggle" id="coupleToggle" onclick="toggleCouple()">
+        <span class="ct-label">Il y a eu des activités ce soir</span>
+        <span class="ct-check" id="ctCheck"></span>
+      </button>
+      <div class="couple-options" id="coupleOptions">
+        <div class="multi-hint" style="margin-top:14px">✦ Plusieurs réponses possibles</div>
+        <div class="options-grid">
+          <button class="option-btn" onclick="selMulti('qCouple','defile',this)"><span class="emoji">👙</span><span class="label">Défilé</span><span class="check"></span></button>
+          <button class="option-btn" onclick="selMulti('qCouple','photos',this)"><span class="emoji">📸</span><span class="label">Photos ou vidéo</span><span class="check"></span></button>
+          <button class="option-btn" onclick="selMulti('qCouple','jeux',this)"><span class="emoji">🎲</span><span class="label">Jeux</span><span class="check"></span></button>
+          <button class="option-btn" onclick="selMulti('qCouple','sortie',this)"><span class="emoji">🌃</span><span class="label">Sortie à 2</span><span class="check"></span></button>
+        </div>
       </div>
     </div>
 
@@ -202,75 +326,151 @@
 
 <script>
 // ════════════════════════════════════════════
-//  REMPLACEZ ICI VOTRE URL GOOGLE APPS SCRIPT
-const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw7OvuvIoZwYzTUbJR3-lkmuUeAGekWEWthMINtOtnEBjMEe_MW4A3QROCiH6IeEAU/exec';
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzj4qh305BO9tu_R2VeIGC0o9vDFKWmvaT3emvRSxyNxWN2tF0Skx6Y6oNOtXr0Fd_P/exec';
 // ════════════════════════════════════════════
 
 const now       = new Date();
-const isWeekend = now.getDay() === 0 || now.getDay() === 6;
-
 const dp = document.getElementById('datePicker');
 dp.value = now.toISOString().split('T')[0];
 
-// ── État central ────────────────────────────
+// ── État central ─────────────────────────────
 const A = {
-  q1: null,         // meteo
-  q2: null,         // sommeil
-  q3: null,         // heure_fin_travail
-  plaisirs: [],     // liste des catégories cochées
-  q5: null,         // temps_pour_soi
-  qCouple: null,    // meteo_couple
-  qCoupleSub: [],   // couple_axes
-  comment: ''       // couple_commentaire
+  q1: null,
+  q2: null,
+  q3: null,
+  moments: {
+    energie:      null,
+    bienetre:     null,
+    gourmandise:  null,
+    convivialite: null,
+    evasion:      null,
+    vitalite:     null,
+    exaltant:     null,
+    tristesse:    null,
+    stress:       null,
+    conflits:     []
+  },
+  aucunMoment: false,
+  coupleActif: false,  // coche "il y a eu des activités"
+  qCouple: []
 };
 
-// Weekend → pré-cocher "pas travaillé"
-if (isWeekend) {
-  document.getElementById('q3_repos_btn').classList.add('selected');
-  A.q3 = 'pas_travaille';
-  document.getElementById('card3').classList.add('answered');
-}
-
-// ── Sélection simple (radio) ─────────────────
-function sel1(key, val, btn) {
-  btn.closest('.card').querySelectorAll(':scope > .options-grid > .option-btn')
-     .forEach(b => b.classList.remove('selected'));
-  btn.classList.add('selected');
-  A[key] = val;
-  sync();
-}
-
-// ── Sélection temps pour soi (multi) ────────
-function selTemps(val, btn) {
-  if (val === 'aucun') {
-    document.querySelectorAll('#plaisirGrid .plaisir-btn').forEach(b => b.classList.remove('selected'));
+// ── Weekend selon la date choisie ────────────
+function applyWeekend(dateStr) {
+  const day = new Date(dateStr).getDay();
+  const isWE = day === 0 || day === 6;
+  const btn = document.getElementById('q3_repos_btn');
+  // Désélectionner toutes les options Q3 d'abord
+  document.querySelectorAll('#card3 .options-grid .option-btn').forEach(b => b.classList.remove('selected'));
+  if (isWE) {
     btn.classList.add('selected');
-    A.plaisirs = ['aucun'];
+    A.q3 = 'pas_travaille';
+    document.getElementById('card3').classList.add('answered');
   } else {
-    document.getElementById('pb_aucun').classList.remove('selected');
-    A.plaisirs = A.plaisirs.filter(v => v !== 'aucun');
-    if (btn.classList.contains('selected')) {
-      btn.classList.remove('selected');
-      A.plaisirs = A.plaisirs.filter(v => v !== val);
-    } else {
-      btn.classList.add('selected');
-      A.plaisirs.push(val);
+    if (A.q3 === 'pas_travaille') {
+      A.q3 = null;
+      document.getElementById('card3').classList.remove('answered');
     }
   }
   sync();
 }
 
-// ── Sélection couple (affiche sous-section) ──
-function selCouple(val, btn) {
-  document.querySelectorAll('#card6 > .options-grid > .option-btn')
-          .forEach(b => b.classList.remove('selected'));
+applyWeekend(dp.value);
+dp.addEventListener('change', () => applyWeekend(dp.value));
+
+// ── Sélection simple (radio) ──────────────────
+function sel1(key, val, btn) {
+  const card = btn.closest('.card');
+  card.querySelectorAll(':scope > .options-grid > .option-btn')
+      .forEach(b => b.classList.remove('selected'));
   btn.classList.add('selected');
-  A.qCouple = val;
-  document.getElementById('coupleSubCard').classList.add('visible');
+  A[key] = val;
   sync();
 }
 
-// ── Sélection multi générique ─────────────────
+// ── Moments : ouvrir/fermer ───────────────────
+function toggleMoment(key) {
+  const row = document.getElementById('mr_' + key);
+  const wasOpen = row.classList.contains('open');
+  document.querySelectorAll('.moment-row.open').forEach(r => r.classList.remove('open'));
+  if (!wasOpen) row.classList.add('open');
+}
+
+// ── Moments : choisir intensité (radio) ───────
+function setMoment(key, val, btn) {
+  btn.closest('.moment-sub').querySelectorAll('.sub-choice').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+  A.moments[key] = val;
+  const row = document.getElementById('mr_' + key);
+  row.classList.add('selected');
+  const labels = { super: 'Super', au_top: 'Au top !', petit: 'Petit', grand: 'Grand', aucun: 'Aucun', un_peu: 'Un peu', beaucoup: 'Beaucoup' };
+  document.getElementById('mv_' + key).textContent = labels[val] || val;
+  deactivateAucun();
+  sync();
+}
+
+// ── Conflits : multi ───────────────────────────
+function setConflitMulti(val, btn) {
+  if (btn.classList.contains('selected')) {
+    btn.classList.remove('selected');
+    A.moments.conflits = A.moments.conflits.filter(v => v !== val);
+  } else {
+    btn.classList.add('selected');
+    if (!A.moments.conflits.includes(val)) A.moments.conflits.push(val);
+  }
+  const row = document.getElementById('mr_conflits');
+  if (A.moments.conflits.length > 0) {
+    row.classList.add('selected');
+    document.getElementById('mv_conflits').textContent = A.moments.conflits.map(v => v.charAt(0).toUpperCase()+v.slice(1)).join(', ');
+  } else {
+    row.classList.remove('selected');
+    document.getElementById('mv_conflits').textContent = '';
+  }
+  deactivateAucun();
+  sync();
+}
+
+// ── Aucun moment notable ──────────────────────
+function setAucun(btn) {
+  if (btn.classList.contains('selected')) {
+    btn.classList.remove('selected');
+    A.aucunMoment = false;
+  } else {
+    clearAllMoments();
+    btn.classList.add('selected');
+    A.aucunMoment = true;
+  }
+  sync();
+}
+
+function deactivateAucun() {
+  document.getElementById('btn_aucun').classList.remove('selected');
+  A.aucunMoment = false;
+}
+
+function clearAllMoments() {
+  Object.keys(A.moments).forEach(k => { A.moments[k] = k === 'conflits' ? [] : null; });
+  document.querySelectorAll('.moment-row').forEach(r => r.classList.remove('selected','open'));
+  document.querySelectorAll('.sub-choice').forEach(b => b.classList.remove('selected'));
+  document.querySelectorAll('[id^="mv_"]').forEach(el => el.textContent = '');
+}
+
+// ── Toggle activités couple ───────────────────
+function toggleCouple() {
+  A.coupleActif = !A.coupleActif;
+  const toggle = document.getElementById('coupleToggle');
+  const options = document.getElementById('coupleOptions');
+  toggle.classList.toggle('active', A.coupleActif);
+  options.classList.toggle('visible', A.coupleActif);
+  if (!A.coupleActif) {
+    // Réinitialiser les choix si on décoche
+    A.qCouple = [];
+    document.querySelectorAll('#coupleOptions .option-btn').forEach(b => b.classList.remove('selected'));
+  }
+  sync();
+}
+
+// ── Activités couple (multi) ──────────────────
 function selMulti(key, val, btn) {
   if (btn.classList.contains('selected')) {
     btn.classList.remove('selected');
@@ -282,23 +482,26 @@ function selMulti(key, val, btn) {
   sync();
 }
 
-// ── Synchronisation UI ───────────────────────
-function sync() {
-  A.comment = (document.getElementById('coupleComment').value || '').trim();
-  const ok = {
-    1: !!A.q1,
-    2: !!A.q2,
-    3: !!A.q3,
-    4: A.plaisirs.length > 0,
-    5: !!A.q5,
-    6: !!A.qCouple
-  };
-  for (let i = 1; i <= 6; i++)
-    document.getElementById('card'+i).classList.toggle('answered', !!ok[i]);
-  document.getElementById('submitBtn').disabled = !Object.values(ok).every(Boolean);
+// ── Validations ───────────────────────────────
+function q4Valid() {
+  if (A.aucunMoment) return true;
+  return Object.entries(A.moments).some(([k, v]) => k === 'conflits' ? v.length > 0 : v !== null);
 }
 
-document.getElementById('coupleComment').addEventListener('input', sync);
+// Q5 : valide si la coche est activée (avec ou sans activité sélectionnée = on sait qu'il y a eu qqch)
+// OU si la coche n'est pas activée (= aucune activité, c'est une réponse valide)
+// → toujours valide, la card5 est juste informationnelle
+function q5Valid() { return true; }
+
+// ── Sync UI ───────────────────────────────────
+function sync() {
+  const ok = { 1:!!A.q1, 2:!!A.q2, 3:!!A.q3, 4:q4Valid(), 5:q5Valid() };
+  for (let i = 1; i <= 5; i++)
+    document.getElementById('card'+i).classList.toggle('answered', !!ok[i]);
+  // Card5 : "answered" si la coche est définie (peu importe sa valeur)
+  document.getElementById('card5').classList.toggle('answered', A.coupleActif || !A.coupleActif);
+  document.getElementById('submitBtn').disabled = !(ok[1] && ok[2] && ok[3] && ok[4]);
+}
 
 // ── Soumission ────────────────────────────────
 async function submitForm() {
@@ -307,42 +510,36 @@ async function submitForm() {
   btn.disabled = true;
   bc.innerHTML = '<div class="spinner"></div>';
 
-  const raw  = dp.value;                          // YYYY-MM-DD
+  const raw = dp.value;
   const [y,m,d] = raw.split('-');
-  const dateFR   = d+'/'+m+'/'+y;                 // DD/MM/YYYY
-  const JOURS    = ['dimanche','lundi','mardi','mercredi','jeudi','vendredi','samedi'];
-  const jourSem  = JOURS[new Date(raw).getDay()];
+  const dateFR  = d+'/'+m+'/'+y;
+  const JOURS   = ['dimanche','lundi','mardi','mercredi','jeudi','vendredi','samedi'];
+  const jourSem = JOURS[new Date(raw).getDay()];
+  const M = A.moments;
 
-  // ═══════════════════════════════════════════════════════
-  //  PAYLOAD — chaque clé correspond EXACTEMENT au champ
-  //  lu dans buildRow() du script Apps Script
-  // ═══════════════════════════════════════════════════════
   const payload = {
-    date:                dateFR,
-    heure_envoi:         now.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'}),
-    jour_semaine:        jourSem,
-    // ── Bien-être de base ──
-    meteo:               A.q1,
-    sommeil:             A.q2,
-    heure_fin_travail:   A.q3,
-    // ── Plaisirs (0 ou 1 par catégorie) ──
-    plaisir_energie:     A.plaisirs.includes('energie')     ? 1 : 0,
-    plaisir_douceur:     A.plaisirs.includes('douceur')     ? 1 : 0,
-    plaisir_gourmandise: A.plaisirs.includes('gourmandise') ? 1 : 0,
-    plaisir_reconnexion: A.plaisirs.includes('reconnexion') ? 1 : 0,
-    plaisir_evasion:     A.plaisirs.includes('evasion')     ? 1 : 0,
-    plaisir_aucun:       A.plaisirs.includes('aucun')       ? 1 : 0,
-    // ── Durée ──
-    temps_pour_soi:      A.q5,
-    // ── Couple ──
-    meteo_couple:        A.qCouple,
-    coquin_excitee:      A.qCoupleSub.includes('excitee')  ? 1 : 0,
-    coquin_jeu:          A.qCoupleSub.includes('jeu')       ? 1 : 0,
-    coquin_lingerie:     A.qCoupleSub.includes('lingerie')  ? 1 : 0,
-    coquin_photos:       A.qCoupleSub.includes('photos')    ? 1 : 0,
-    coquin_solitaire:    A.qCoupleSub.includes('solitaire') ? 1 : 0,
-    coquin_sortie:       A.qCoupleSub.includes('sortie')    ? 1 : 0,
-    couple_commentaire:  A.comment
+    date:               dateFR,
+    heure_envoi:        new Date().toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'}),
+    jour_semaine:       jourSem,
+    meteo:              A.q1,
+    sommeil:            A.q2,
+    heure_fin_travail:  A.q3,
+    moment_energie:     M.energie      || '',
+    moment_bienetre:    M.bienetre     || '',
+    moment_gourmandise: M.gourmandise  || '',
+    moment_convivialite:M.convivialite || '',
+    moment_evasion:     M.evasion      || '',
+    moment_vitalite:    M.vitalite     || '',
+    moment_exaltant:    M.exaltant     || '',
+    moment_tristesse:   M.tristesse    || '',
+    moment_stress:      M.stress       || '',
+    moment_conflits:    M.conflits.join(', '),
+    aucun_moment:       A.aucunMoment ? 1 : 0,
+    couple_defile:      A.qCouple.includes('defile') ? 1 : 0,
+    couple_photos:      A.qCouple.includes('photos') ? 1 : 0,
+    couple_jeux:        A.qCouple.includes('jeux')   ? 1 : 0,
+    couple_sortie:      A.qCouple.includes('sortie') ? 1 : 0,
+    couple_aucune:      A.coupleActif ? 0 : 1
   };
 
   try {
@@ -372,18 +569,17 @@ function showSuccess() {
 function resetForm() {
   document.getElementById('successScreen').classList.remove('show');
   document.getElementById('formContent').classList.remove('hide');
-  A.q1=null; A.q2=null; A.q3=isWeekend?'pas_travaille':null;
-  A.plaisirs=[]; A.q5=null; A.qCouple=null; A.qCoupleSub=[]; A.comment='';
-  document.querySelectorAll('.option-btn,.plaisir-btn').forEach(b=>b.classList.remove('selected'));
+  A.q1=null; A.q2=null; A.q3=null;
+  clearAllMoments();
+  A.aucunMoment=false; A.coupleActif=false; A.qCouple=[];
+  document.getElementById('btn_aucun').classList.remove('selected');
+  document.getElementById('coupleToggle').classList.remove('active');
+  document.getElementById('coupleOptions').classList.remove('visible');
+  document.querySelectorAll('.option-btn').forEach(b=>b.classList.remove('selected'));
   document.querySelectorAll('.card').forEach(c=>c.classList.remove('answered'));
-  document.getElementById('coupleSubCard').classList.remove('visible');
-  document.getElementById('coupleComment').value='';
   document.getElementById('btnContent').innerHTML='<span>Enregistrer ma journée</span>&nbsp;✦';
   dp.value = new Date().toISOString().split('T')[0];
-  if (isWeekend) {
-    document.getElementById('q3_repos_btn').classList.add('selected');
-    document.getElementById('card3').classList.add('answered');
-  }
+  applyWeekend(dp.value);
   window.scrollTo({top:0,behavior:'smooth'});
   sync();
 }
