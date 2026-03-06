@@ -174,6 +174,18 @@
     <div class="card" id="card4">
       <div class="card-question">Et cette journée ?</div>
       <div class="multi-hint">✦ Toucher un moment pour choisir son intensité</div>
+
+      <div class="moment-separator">
+  <div class="sep-line"></div>
+  <div class="sep-label">Rien à signaler</div>
+  <div class="sep-line"></div>
+</div>
+      
+      <button class="moment-none" id="btn_aucun" onclick="setAucun(this)">
+        <span style="font-size:18px">😞</span>
+        <span class="label">Aucun moment notable</span>
+      </button>
+    </div>
       
 <div class="moment-separator">
   <div class="sep-line"></div>
@@ -261,7 +273,7 @@
 
       <div class="moment-row" id="mr_exaltant">
         <button class="moment-header" onclick="toggleMoment('exaltant')">
-          <span class="m-emoji">🌟</span>
+          <span class="m-emoji">🌞</span>
           <span class="m-label">Moment exaltant</span>
           <span class="m-val" id="mv_exaltant"></span>
           <span class="m-arrow">▾</span>
@@ -280,7 +292,7 @@
       
       <div class="moment-row" id="mr_tristesse">
         <button class="moment-header" onclick="toggleMoment('tristesse')">
-          <span class="m-emoji">💧</span>
+          <span class="m-emoji">🌧️</span>
           <span class="m-label">Moment de tristesse</span>
           <span class="m-val" id="mv_tristesse"></span>
           <span class="m-arrow">▾</span>
@@ -306,7 +318,7 @@
 
       <div class="moment-row" id="mr_conflits">
         <button class="moment-header" onclick="toggleMoment('conflits')">
-          <span class="m-emoji">⚡</span>
+          <span class="m-emoji">⚔️</span>
           <span class="m-label">Moments de conflits</span>
           <span class="m-val" id="mv_conflits"></span>
           <span class="m-arrow">▾</span>
@@ -317,18 +329,6 @@
           <button class="sub-choice" onclick="setConflitMulti('autre',this)">Autre</button>
         </div>
       </div>
-
-      <div class="moment-separator">
-  <div class="sep-line"></div>
-  <div class="sep-label">Rien à signaler</div>
-  <div class="sep-line"></div>
-</div>
-      
-      <button class="moment-none" id="btn_aucun" onclick="setAucun(this)">
-        <span style="font-size:18px">😐</span>
-        <span class="label">Aucun moment notable</span>
-      </button>
-    </div>
 
     <!-- Q5 : Activités couple -->
     <div class="card" id="card5">
