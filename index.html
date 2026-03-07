@@ -330,20 +330,20 @@
     </div>       
   </div>
 
-    <!-- Q5 : Activités couple -->
+    <!-- Q5 : Activités communes -->
     <div class="card" id="card5">
-      <div class="card-question">Activités du couple</div>
+      <div class="card-question">Activités communes</div>
       <button class="couple-toggle" id="coupleToggle" onclick="toggleCouple()">
-        <span class="ct-label">Il y a eu des activités ce soir</span>
+        <span class="ct-label">Il y a eu des activités communes aujourd'hui</span>
         <span class="ct-check" id="ctCheck"></span>
       </button>
       <div class="couple-options" id="coupleOptions">
         <div class="multi-hint" style="margin-top:14px">✦ Plusieurs réponses possibles</div>
         <div class="options-grid">
-          <button class="option-btn" onclick="selMulti('qCouple','defile',this)"><span class="emoji">👙</span><span class="label">Défilé</span><span class="check"></span></button>
-          <button class="option-btn" onclick="selMulti('qCouple','photos',this)"><span class="emoji">📸</span><span class="label">Photos ou vidéo</span><span class="check"></span></button>
+          <button class="option-btn" onclick="selMulti('qCouple','defile',this)"><span class="emoji">👗</span><span class="label">Haute couture</span><span class="check"></span></button>
+          <button class="option-btn" onclick="selMulti('qCouple','photos',this)"><span class="emoji">📸</span><span class="label">Exposition</span><span class="check"></span></button>
           <button class="option-btn" onclick="selMulti('qCouple','jeux',this)"><span class="emoji">🎲</span><span class="label">Jeux</span><span class="check"></span></button>
-          <button class="option-btn" onclick="selMulti('qCouple','sortie',this)"><span class="emoji">🌃</span><span class="label">Sortie à 2</span><span class="check"></span></button>
+          <button class="option-btn" onclick="selMulti('qCouple','sortie',this)"><span class="emoji">🥂</span><span class="label">Sortie à 2</span><span class="check"></span></button>
         </div>
       </div>
     </div>
@@ -569,8 +569,8 @@ async function submitForm() {
     moment_stress:      M.stress       || '',
     moment_conflits:    M.conflits.join(', '),
     aucun_moment:       A.aucunMoment ? 1 : 0,
-    couple_defile:      A.qCouple.includes('defile') ? 1 : 0,
-    couple_photos:      A.qCouple.includes('photos') ? 1 : 0,
+    couple_defile:      A.qCouple.includes('Haute couture') ? 1 : 0,
+    couple_photos:      A.qCouple.includes('Exposition') ? 1 : 0,
     couple_jeux:        A.qCouple.includes('jeux')   ? 1 : 0,
     couple_sortie:      A.qCouple.includes('sortie') ? 1 : 0,
     couple_aucune:      A.coupleActif ? 0 : 1
