@@ -30,31 +30,14 @@
   .date-icon { font-size: 16px; }
   .date-input { background: transparent; border: none; outline: none; font-family: 'Jost', sans-serif; font-size: 17px; font-weight: 400; color: var(--or-light); cursor: pointer; width: 148px; text-align: center; color-scheme: dark; }
   .date-input::-webkit-calendar-picker-indicator { opacity: 0; width: 0; }
-
   .card { background: rgba(255,255,255,0.03); border: var(--border); border-radius: 16px; padding: 22px 20px; margin-bottom: 14px; animation: fadeUp 0.4s ease both; transition: border-color 0.3s; }
   @keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
   .card.answered { border: 1.8px solid rgba(201,168,76,0.75); }
   .card-question { font-family: 'Cormorant Garamond', serif; font-size: 21px; font-weight: 400; color: #fff; line-height: 1.3; margin-bottom: 18px; }
   .multi-hint { font-size: 11px; color: rgba(201,168,76,0.65); letter-spacing: 0.5px; margin-bottom: 13px; }
-.moment-separator { 
-  display: flex; 
-  align-items: center; 
-  gap: 10px; 
-  margin: 12px 0 8px; 
-}
-.moment-separator .sep-line { 
-  flex: 1; 
-  height: 1px; 
-  background: linear-gradient(90deg, transparent, rgba(201,168,76,0.4), transparent); 
-}
-.moment-separator .sep-label { 
-  font-size: 10px; 
-  font-weight: 500; 
-  letter-spacing: 1.5px; 
-  text-transform: uppercase; 
-  color: rgba(201,168,76,0.5); 
-}
-  /* Boutons radio simples */
+  .moment-separator { display: flex; align-items: center; gap: 10px; margin: 12px 0 8px; }
+  .moment-separator .sep-line { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, rgba(201,168,76,0.4), transparent); }
+  .moment-separator .sep-label { font-size: 10px; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(201,168,76,0.5); }
   .options-grid { display: flex; flex-direction: column; gap: 9px; }
   .option-btn { display: flex; align-items: center; gap: 12px; padding: 13px 15px; background: transparent; border: var(--border); border-radius: 11px; cursor: pointer; width: 100%; transition: all 0.2s; -webkit-appearance: none; color: #fff; }
   .option-btn .emoji { font-size: 19px; flex-shrink: 0; width: 24px; text-align: center; }
@@ -64,8 +47,6 @@
   .option-btn.selected .label { color: #fff; font-weight: 400; }
   .option-btn.selected .check { background: var(--or); border-color: var(--or); }
   .option-btn.selected .check::after { content: ''; width: 5px; height: 5px; border-radius: 50%; background: #000; }
-
-  /* Moments Q4 */
   .moment-row { border: var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 9px; transition: border-color 0.2s; }
   .moment-row.selected { border: 1.8px solid var(--or); background: rgba(201,168,76,0.04); }
   .moment-header { display: flex; align-items: center; gap: 10px; padding: 13px 14px; cursor: pointer; background: transparent; width: 100%; -webkit-appearance: none; color: #fff; border: none; }
@@ -78,13 +59,10 @@
   .moment-row.open .moment-sub { display: flex; }
   .sub-choice { padding: 7px 16px; background: transparent; border: var(--border); border-radius: 20px; cursor: pointer; font-size: 12px; font-weight: 400; color: rgba(255,255,255,0.7); -webkit-appearance: none; transition: all 0.18s; }
   .sub-choice.selected { background: var(--or-sel); border-color: var(--or); color: #fff; font-weight: 500; }
-
-  .moment-none { display: flex; align-items: center; gap: 12px; padding: 13px 15px; background: transparent; border: var(--border); border-radius: 11px; cursor: pointer; width: 100%; transition: all 0.2s; -webkit-appearance: none; color: #fff; margin-top: 4px; border: none; border: var(--border); }
+  .moment-none { display: flex; align-items: center; gap: 12px; padding: 13px 15px; background: transparent; border: var(--border); border-radius: 11px; cursor: pointer; width: 100%; transition: all 0.2s; -webkit-appearance: none; color: #fff; margin-top: 4px; }
   .moment-none .label { font-size: 14px; font-weight: 300; color: var(--blanc-soft); flex: 1; text-align: left; }
   .moment-none.selected { background: var(--or-sel); border: 1.8px solid var(--or); }
   .moment-none.selected .label { color: #fff; }
-
-  /* Toggle couple */
   .couple-toggle { display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 14px 16px; background: transparent; border: var(--border); border-radius: 11px; cursor: pointer; -webkit-appearance: none; color: #fff; transition: all 0.2s; }
   .couple-toggle.active { background: var(--or-sel); border: 1.8px solid var(--or); }
   .ct-label { font-size: 14px; font-weight: 300; color: var(--blanc-soft); }
@@ -94,14 +72,15 @@
   .couple-toggle.active .ct-check::after { content: '✓'; font-size: 13px; color: #000; font-weight: 700; }
   .couple-options { display: none; animation: fadeUp 0.3s ease; }
   .couple-options.visible { display: block; }
-
-  /* Submit */
+  /* Bienveillance */
+  .bienveillance-sub { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 400; font-style: italic; color: rgba(255,255,255,0.80); margin: 0 0 10px; }
+  .bienveillance-block { margin-bottom: 20px; }
+  .bienveillance-block:last-child { margin-bottom: 0; }
   .submit-section { padding: 8px 0 24px; }
   .submit-btn { width: 100%; padding: 18px; background: var(--or-bg); color: var(--or-light); border: var(--border-thick); border-radius: 14px; font-family: 'Cormorant Garamond', serif; font-size: 22px; font-style: italic; font-weight: 300; letter-spacing: 1px; cursor: pointer; transition: all 0.2s; -webkit-appearance: none; }
   .submit-btn:disabled { opacity: 0.28; cursor: not-allowed; }
   .btn-content { display: flex; align-items: center; justify-content: center; gap: 12px; }
   .footer { text-align: center; padding: 6px 0 14px; font-family: 'Cormorant Garamond', serif; font-size: 17px; font-style: italic; font-weight: 300; color: rgba(201,168,76,0.5); letter-spacing: 3px; }
-
   .success-screen { display: none; text-align: center; padding: 100px 20px; }
   .success-screen.show { display: block; animation: fadeUp 0.5s ease; }
   .form-content.hide { display: none; }
@@ -163,7 +142,7 @@
     <div class="card" id="card3">
       <div class="card-question">À quelle heure es-tu rentrée ou as-tu arrêté le télétravail ?</div>
       <div class="options-grid">
-         <button class="option-btn" id="q3_repos_btn" onclick="sel1('q3','pas_travaille',this)"><span class="emoji">🏖️</span><span class="label">Pas de travail aujourd'hui</span><span class="check"></span></button>
+        <button class="option-btn" id="q3_repos_btn" onclick="sel1('q3','pas_travaille',this)"><span class="emoji">🏖️</span><span class="label">Pas de travail aujourd'hui</span><span class="check"></span></button>
         <button class="option-btn" onclick="sel1('q3','avant_19h30',this)"><span class="emoji">✅</span><span class="label">Avant 19h30</span><span class="check"></span></button>
         <button class="option-btn" onclick="sel1('q3','entre_19h30_20h30',this)"><span class="emoji">⏰</span><span class="label">Après 19h30 mais avant 20h30</span><span class="check"></span></button>
         <button class="option-btn" onclick="sel1('q3','apres_20h30',this)"><span class="emoji">🚨</span><span class="label">Après 20h30</span><span class="check"></span></button>
@@ -176,22 +155,22 @@
       <div class="multi-hint">✦ Toucher un moment pour choisir son intensité</div>
 
       <div class="moment-separator">
-  <div class="sep-line"></div>
-  <div class="sep-label">Rien à signaler</div>
-  <div class="sep-line"></div>  
+        <div class="sep-line"></div>
+        <div class="sep-label">Rien à signaler</div>
+        <div class="sep-line"></div>
       </div>
-      
+
       <button class="moment-none" id="btn_aucun" onclick="setAucun(this)">
         <span style="font-size:18px">😞</span>
         <span class="label">Aucun moment notable</span>
       </button>
-  
-    <div class="moment-separator">
-  <div class="sep-line"></div>
-  <div class="sep-label">Moments positifs</div>
-  <div class="sep-line"></div>
-    </div>
-      
+
+      <div class="moment-separator">
+        <div class="sep-line"></div>
+        <div class="sep-label">Moments positifs</div>
+        <div class="sep-line"></div>
+      </div>
+
       <div class="moment-row" id="mr_energie">
         <button class="moment-header" onclick="toggleMoment('energie')">
           <span class="m-emoji">⚡</span>
@@ -283,12 +262,12 @@
         </div>
       </div>
 
-<div class="moment-separator">
-  <div class="sep-line"></div>
-  <div class="sep-label">Moments négatifs</div>
-  <div class="sep-line"></div>
-</div>
-      
+      <div class="moment-separator">
+        <div class="sep-line"></div>
+        <div class="sep-label">Moments négatifs</div>
+        <div class="sep-line"></div>
+      </div>
+
       <div class="moment-row" id="mr_tristesse">
         <button class="moment-header" onclick="toggleMoment('tristesse')">
           <span class="m-emoji">🌧️</span>
@@ -315,6 +294,7 @@
         </div>
       </div>
 
+      <!-- ✦ MODIFICATION : Thomas / Emma / Nicolas (au lieu de Enfants / Mari) -->
       <div class="moment-row" id="mr_conflits">
         <button class="moment-header" onclick="toggleMoment('conflits')">
           <span class="m-emoji">⚔️</span>
@@ -323,12 +303,13 @@
           <span class="m-arrow">▾</span>
         </button>
         <div class="moment-sub">
-          <button class="sub-choice" onclick="setConflitMulti('enfants',this)">Enfants</button>
-          <button class="sub-choice" onclick="setConflitMulti('mari',this)">Mari</button>
+          <button class="sub-choice" onclick="setConflitMulti('thomas',this)">Thomas</button>
+          <button class="sub-choice" onclick="setConflitMulti('emma',this)">Emma</button>
+          <button class="sub-choice" onclick="setConflitMulti('nicolas',this)">Nicolas</button>
           <button class="sub-choice" onclick="setConflitMulti('autre',this)">Autre</button>
         </div>
-    </div>       
-  </div>
+      </div>
+    </div>
 
     <!-- Q5 : Activités communes -->
     <div class="card" id="card5">
@@ -348,6 +329,33 @@
       </div>
     </div>
 
+    <!-- ✦ NOUVEAU : Q6 Bienveillance -->
+    <div class="card" id="card6">
+      <div class="card-question">Bienveillance</div>
+
+      <div class="bienveillance-block">
+        <p class="bienveillance-sub">Ai-je encouragé ?</p>
+        <div class="multi-hint">✦ Plusieurs réponses possibles</div>
+        <div class="options-grid">
+          <button class="option-btn" onclick="selMulti('qEncourage','emma',this)"><span class="emoji">👧</span><span class="label">Emma</span><span class="check"></span></button>
+          <button class="option-btn" onclick="selMulti('qEncourage','thomas',this)"><span class="emoji">👦</span><span class="label">Thomas</span><span class="check"></span></button>
+          <button class="option-btn" onclick="selMulti('qEncourage','nicolas',this)"><span class="emoji">🧔</span><span class="label">Nicolas</span><span class="check"></span></button>
+          <button class="option-btn" onclick="selMulti('qEncourage','personne',this)"><span class="emoji">—</span><span class="label">Personne aujourd'hui</span><span class="check"></span></button>
+        </div>
+      </div>
+
+      <div class="bienveillance-block">
+        <p class="bienveillance-sub">Ai-je été à l'écoute ?</p>
+        <div class="multi-hint">✦ Plusieurs réponses possibles</div>
+        <div class="options-grid">
+          <button class="option-btn" onclick="selMulti('qEcoute','emma',this)"><span class="emoji">👧</span><span class="label">Emma</span><span class="check"></span></button>
+          <button class="option-btn" onclick="selMulti('qEcoute','thomas',this)"><span class="emoji">👦</span><span class="label">Thomas</span><span class="check"></span></button>
+          <button class="option-btn" onclick="selMulti('qEcoute','nicolas',this)"><span class="emoji">🧔</span><span class="label">Nicolas</span><span class="check"></span></button>
+          <button class="option-btn" onclick="selMulti('qEcoute','personne',this)"><span class="emoji">—</span><span class="label">Personne aujourd'hui</span><span class="check"></span></button>
+        </div>
+      </div>
+    </div>
+
     <div class="submit-section">
       <button class="submit-btn" id="submitBtn" onclick="submitForm()" disabled>
         <span class="btn-content" id="btnContent"><span>Enregistrer ma journée</span>&nbsp;✦</span>
@@ -363,9 +371,9 @@
 const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzj4qh305BO9tu_R2VeIGC0o9vDFKWmvaT3emvRSxyNxWN2tF0Skx6Y6oNOtXr0Fd_P/exec';
 // ════════════════════════════════════════════
 
-const now       = new Date();
-const dp = document.getElementById('datePicker');
-dp.value = now.toISOString().split('T')[0];
+const now = new Date();
+const dp  = document.getElementById('datePicker');
+dp.value  = now.toISOString().split('T')[0];
 
 // ── État central ─────────────────────────────
 const A = {
@@ -385,16 +393,17 @@ const A = {
     conflits:     []
   },
   aucunMoment: false,
-  coupleActif: false,  // coche "il y a eu des activités"
-  qCouple: []
+  coupleActif: false,
+  qCouple:    [],
+  qEncourage: [],   // ✦ NOUVEAU
+  qEcoute:    []    // ✦ NOUVEAU
 };
 
 // ── Weekend selon la date choisie ────────────
 function applyWeekend(dateStr) {
-  const day = new Date(dateStr).getDay();
+  const day  = new Date(dateStr).getDay();
   const isWE = day === 0 || day === 6;
-  const btn = document.getElementById('q3_repos_btn');
-  // Désélectionner toutes les options Q3 d'abord
+  const btn  = document.getElementById('q3_repos_btn');
   document.querySelectorAll('#card3 .options-grid .option-btn').forEach(b => b.classList.remove('selected'));
   if (isWE) {
     btn.classList.add('selected');
@@ -424,26 +433,26 @@ function sel1(key, val, btn) {
 
 // ── Moments : ouvrir/fermer ───────────────────
 function toggleMoment(key) {
-  const row = document.getElementById('mr_' + key);
+  const row     = document.getElementById('mr_' + key);
   const wasOpen = row.classList.contains('open');
   document.querySelectorAll('.moment-row.open').forEach(r => r.classList.remove('open'));
   if (!wasOpen) row.classList.add('open');
 }
 
-// ── Moments : choisir intensité (radio) ───────
+// ── Moments : choisir intensité ───────────────
 function setMoment(key, val, btn) {
   btn.closest('.moment-sub').querySelectorAll('.sub-choice').forEach(b => b.classList.remove('selected'));
   btn.classList.add('selected');
   A.moments[key] = val;
   const row = document.getElementById('mr_' + key);
   row.classList.add('selected');
-  const labels = { super: 'Super', au_top: 'Au top !', petit: 'Petit', grand: 'Grand', aucun: 'Aucun', un_peu: 'Un peu', beaucoup: 'Beaucoup' };
+  const labels = { super: 'Super', au_top: 'Au top !', petit: 'Petit', grand: 'Grand', un_peu: 'Un peu', beaucoup: 'Beaucoup' };
   document.getElementById('mv_' + key).textContent = labels[val] || val;
   deactivateAucun();
   sync();
 }
 
-// ── Conflits : multi ───────────────────────────
+// ── Conflits : multi ──────────────────────────
 function setConflitMulti(val, btn) {
   if (btn.classList.contains('selected')) {
     btn.classList.remove('selected');
@@ -455,7 +464,8 @@ function setConflitMulti(val, btn) {
   const row = document.getElementById('mr_conflits');
   if (A.moments.conflits.length > 0) {
     row.classList.add('selected');
-    document.getElementById('mv_conflits').textContent = A.moments.conflits.map(v => v.charAt(0).toUpperCase()+v.slice(1)).join(', ');
+    document.getElementById('mv_conflits').textContent =
+      A.moments.conflits.map(v => v.charAt(0).toUpperCase() + v.slice(1)).join(', ');
   } else {
     row.classList.remove('selected');
     document.getElementById('mv_conflits').textContent = '';
@@ -489,22 +499,19 @@ function clearAllMoments() {
   document.querySelectorAll('[id^="mv_"]').forEach(el => el.textContent = '');
 }
 
-// ── Toggle activités couple ───────────────────
+// ── Toggle activités communes ─────────────────
 function toggleCouple() {
   A.coupleActif = !A.coupleActif;
-  const toggle = document.getElementById('coupleToggle');
-  const options = document.getElementById('coupleOptions');
-  toggle.classList.toggle('active', A.coupleActif);
-  options.classList.toggle('visible', A.coupleActif);
+  document.getElementById('coupleToggle').classList.toggle('active', A.coupleActif);
+  document.getElementById('coupleOptions').classList.toggle('visible', A.coupleActif);
   if (!A.coupleActif) {
-    // Réinitialiser les choix si on décoche
     A.qCouple = [];
     document.querySelectorAll('#coupleOptions .option-btn').forEach(b => b.classList.remove('selected'));
   }
   sync();
 }
 
-// ── Activités couple (multi) ──────────────────
+// ── Multi générique ───────────────────────────
 function selMulti(key, val, btn) {
   if (btn.classList.contains('selected')) {
     btn.classList.remove('selected');
@@ -522,19 +529,16 @@ function q4Valid() {
   return Object.entries(A.moments).some(([k, v]) => k === 'conflits' ? v.length > 0 : v !== null);
 }
 
-// Q5 : valide si la coche est activée (avec ou sans activité sélectionnée = on sait qu'il y a eu qqch)
-// OU si la coche n'est pas activée (= aucune activité, c'est une réponse valide)
-// → toujours valide, la card5 est juste informationnelle
-function q5Valid() { return true; }
+function q6Valid() {
+  return A.qEncourage.length > 0 && A.qEcoute.length > 0;
+}
 
 // ── Sync UI ───────────────────────────────────
 function sync() {
-  const ok = { 1:!!A.q1, 2:!!A.q2, 3:!!A.q3, 4:q4Valid(), 5:q5Valid() };
-  for (let i = 1; i <= 5; i++)
+  const ok = { 1:!!A.q1, 2:!!A.q2, 3:!!A.q3, 4:q4Valid(), 5:true, 6:q6Valid() };
+  for (let i = 1; i <= 6; i++)
     document.getElementById('card'+i).classList.toggle('answered', !!ok[i]);
-  // Card5 : "answered" si la coche est définie (peu importe sa valeur)
-  document.getElementById('card5').classList.toggle('answered', A.coupleActif || !A.coupleActif);
-  document.getElementById('submitBtn').disabled = !(ok[1] && ok[2] && ok[3] && ok[4]);
+  document.getElementById('submitBtn').disabled = !(ok[1] && ok[2] && ok[3] && ok[4] && ok[6]);
 }
 
 // ── Soumission ────────────────────────────────
@@ -544,7 +548,7 @@ async function submitForm() {
   btn.disabled = true;
   bc.innerHTML = '<div class="spinner"></div>';
 
-  const raw = dp.value;
+  const raw     = dp.value;
   const [y,m,d] = raw.split('-');
   const dateFR  = d+'/'+m+'/'+y;
   const JOURS   = ['dimanche','lundi','mardi','mercredi','jeudi','vendredi','samedi'];
@@ -552,28 +556,37 @@ async function submitForm() {
   const M = A.moments;
 
   const payload = {
-    date:               dateFR,
-    heure_envoi:        new Date().toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'}),
-    jour_semaine:       jourSem,
-    meteo:              A.q1,
-    sommeil:            A.q2,
-    heure_fin_travail:  A.q3,
-    moment_energie:     M.energie      || '',
-    moment_bienetre:    M.bienetre     || '',
-    moment_gourmandise: M.gourmandise  || '',
-    moment_convivialite:M.convivialite || '',
-    moment_evasion:     M.evasion      || '',
-    moment_vitalite:    M.vitalite     || '',
-    moment_exaltant:    M.exaltant     || '',
-    moment_tristesse:   M.tristesse    || '',
-    moment_stress:      M.stress       || '',
-    moment_conflits:    M.conflits.join(', '),
-    aucun_moment:       A.aucunMoment ? 1 : 0,
-    couple_defile:      A.qCouple.includes('Haute couture') ? 1 : 0,
-    couple_photos:      A.qCouple.includes('Exposition') ? 1 : 0,
-    couple_jeux:        A.qCouple.includes('jeux')   ? 1 : 0,
-    couple_sortie:      A.qCouple.includes('sortie') ? 1 : 0,
-    couple_aucune:      A.coupleActif ? 0 : 1
+    date:                dateFR,
+    heure_envoi:         new Date().toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'}),
+    jour_semaine:        jourSem,
+    meteo:               A.q1,
+    sommeil:             A.q2,
+    heure_fin_travail:   A.q3,
+    moment_energie:      M.energie       || '',
+    moment_bienetre:     M.bienetre      || '',
+    moment_gourmandise:  M.gourmandise   || '',
+    moment_convivialite: M.convivialite  || '',
+    moment_evasion:      M.evasion       || '',
+    moment_vitalite:     M.vitalite      || '',
+    moment_exaltant:     M.exaltant      || '',
+    moment_tristesse:    M.tristesse     || '',
+    moment_stress:       M.stress        || '',
+    moment_conflits:     M.conflits.join(', '),
+    aucun_moment:        A.aucunMoment ? 1 : 0,
+    couple_defile:       A.qCouple.includes('defile')  ? 1 : 0,
+    couple_photos:       A.qCouple.includes('photos')  ? 1 : 0,
+    couple_jeux:         A.qCouple.includes('jeux')    ? 1 : 0,
+    couple_sortie:       A.qCouple.includes('sortie')  ? 1 : 0,
+    couple_aucune:       A.coupleActif ? 0 : 1,
+    // ✦ NOUVEAU — Bienveillance
+    encourage_emma:      A.qEncourage.includes('emma')     ? 1 : 0,
+    encourage_thomas:    A.qEncourage.includes('thomas')   ? 1 : 0,
+    encourage_nicolas:   A.qEncourage.includes('nicolas')  ? 1 : 0,
+    encourage_personne:  A.qEncourage.includes('personne') ? 1 : 0,
+    ecoute_emma:         A.qEcoute.includes('emma')        ? 1 : 0,
+    ecoute_thomas:       A.qEcoute.includes('thomas')      ? 1 : 0,
+    ecoute_nicolas:      A.qEcoute.includes('nicolas')     ? 1 : 0,
+    ecoute_personne:     A.qEcoute.includes('personne')    ? 1 : 0
   };
 
   try {
@@ -605,7 +618,8 @@ function resetForm() {
   document.getElementById('formContent').classList.remove('hide');
   A.q1=null; A.q2=null; A.q3=null;
   clearAllMoments();
-  A.aucunMoment=false; A.coupleActif=false; A.qCouple=[];
+  A.aucunMoment=false; A.coupleActif=false;
+  A.qCouple=[]; A.qEncourage=[]; A.qEcoute=[];
   document.getElementById('btn_aucun').classList.remove('selected');
   document.getElementById('coupleToggle').classList.remove('active');
   document.getElementById('coupleOptions').classList.remove('visible');
